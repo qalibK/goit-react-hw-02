@@ -40,6 +40,7 @@ export default function App() {
   const totalFeedback = feedback.good + feedback.neutral + feedback.bad;
 
   const hasFeedback = totalFeedback > 0;
+  const resetDisabled = totalFeedback < 1;
   const positiveFeedbackPercentage = totalFeedback
     ? Math.round((feedback.good / totalFeedback) * 100)
     : 0;
@@ -51,6 +52,7 @@ export default function App() {
         <Options
           onUpdateFeedback={updateFeedback}
           onResetFeedback={resetFeedback}
+          resetDisabled={resetDisabled}
         />
         {!hasFeedback ? (
           <Notification />
